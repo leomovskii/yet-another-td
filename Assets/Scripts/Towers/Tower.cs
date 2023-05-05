@@ -35,7 +35,8 @@ public class Tower : MonoBehaviour {
     public void TryFire(Creep target) {
         if (target != null) {
             transform.right = target.transform.position - transform.position;
-            var missle = Instantiate(misslePrefab, aimPoint.position, Quaternion.identity);
+            var point = aimPoint ?? transform;
+            var missle = Instantiate(misslePrefab, point.position, Quaternion.identity);
             missle.Fire(target, attackDamage);
             _AttackTimer = attackDelay;
         }
